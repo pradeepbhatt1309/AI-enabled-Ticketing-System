@@ -183,7 +183,7 @@ UI renders AI-generated content
 ## 📸 Screenshots
 
 > App running on localhost:5173 with dark mode enabled, showing ticket list, conversation thread, and AI insights panel.
-
+<img width="2982" height="1646" alt="Image" src="https://github.com/user-attachments/assets/41450821-2c12-4062-b021-c103a6be9b65" />
 ---
 
 ## 🎓 Built For

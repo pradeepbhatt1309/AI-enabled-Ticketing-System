@@ -195,11 +195,12 @@ This project was built as the practical exam component of the **Anthropic Claude
 
 ---
 
-## 👤 Author
+## 🧑‍💻 Author
 
-**Pradeep Bhatt**
-Senior Project Manager | Wealth & Asset Management | AI Enthusiast
-- GitHub: [@pradeepbhatt1309](https://github.com/pradeepbhatt1309)
+Pradeep Bhatt
+
+Senior Project Manager | AI Delivery | BFSI  
+[LinkedIn](https://www.linkedin.com/in/pradeep-bhatt-3372a954/) · [GitHub](https://github.com/pradeepbhatt1309)
 
 ---
 

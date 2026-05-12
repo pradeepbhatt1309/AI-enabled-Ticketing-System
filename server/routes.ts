@@ -3,7 +3,12 @@ import Anthropic from "@anthropic-ai/sdk";
 import { storage } from "./storage";
 
 const router = Router();
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+function getAnthropic(): Anthropic {
+  const key = process.env.ANTHROPIC_API_KEY;
+  if (!key) throw new Error("ANTHROPIC_API_KEY is not set");
+  return new Anthropic({ apiKey: key });
+}
 
 // ── Trash routes (MUST be before /:id) ────────────────────────────────────────
 
@@ -83,7 +88,7 @@ router.post("/tickets/:id/conversation", (req, res) => {
 router.post("/insights", async (req, res) => {
   try {
     const { ticket, messages } = req.body;
-    const response = await anthropic.messages.create({
+    const response = await getAnthropic().messages.create({
       model: "claude-opus-4-6",
       max_tokens: 1024,
       system:
@@ -112,7 +117,7 @@ router.post("/insights", async (req, res) => {
 router.post("/summarize-conversation", async (req, res) => {
   try {
     const { ticket, messages } = req.body;
-    const response = await anthropic.messages.create({
+    const response = await getAnthropic().messages.create({
       model: "claude-opus-4-6",
       max_tokens: 1024,
       system:
@@ -140,7 +145,7 @@ router.post("/summarize-conversation", async (req, res) => {
 router.post("/generate-reply", async (req, res) => {
   try {
     const { ticket, messages, role } = req.body;
-    const response = await anthropic.messages.create({
+    const response = await getAnthropic().messages.create({
       model: "claude-opus-4-6",
       max_tokens: 512,
       system: `You are a ${role} in a support conversation. Write a natural, helpful, concise reply. Return only the message text, no JSON.`,
@@ -165,7 +170,7 @@ router.post("/generate-reply", async (req, res) => {
 router.get("/knowledge-suggestions", async (req, res) => {
   try {
     const { query, conversation } = req.query as { query: string; conversation: string };
-    const response = await anthropic.messages.create({
+    const response = await getAnthropic().messages.create({
       model: "claude-opus-4-6",
       max_tokens: 1024,
       system:
